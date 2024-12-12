@@ -30,7 +30,7 @@
 ### 2. Crear el topic t-empleado
 
 ```bash
-docker compose -f docker-compose-core-yml
+docker compose -f docker-compose-core-yml up -d
 docker exec -it kafka bash
 kafka-topics.sh --bootstrap-server localhost:9092 --create --topic t-empleado --partitions 1
 ```

@@ -9,7 +9,7 @@
 ## 1. Crear el topic t-stocks con 1 partición
 
 ```bash
-docker compose -f docker-compose-core-yml
+docker compose -f docker-compose-core-yml up -d
 docker exec -it kafka bash
 kafka-topics.sh --bootstrap-server localhost:9092 --create --topic t-stocks --partitions 1
 ```

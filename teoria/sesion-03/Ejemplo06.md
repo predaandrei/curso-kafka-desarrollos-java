@@ -37,7 +37,7 @@
 ### 1. Crear un topic llamado t-contador con 1 partición
 
 ```bash
-docker compose -f docker-compose-core-yml
+docker compose -f docker-compose-core-yml up -d
 docker exec -it kafka bash
 kafka-topics.sh --bootstrap-server localhost:9092 --create --topic t-contador --partitions 1
 ```
