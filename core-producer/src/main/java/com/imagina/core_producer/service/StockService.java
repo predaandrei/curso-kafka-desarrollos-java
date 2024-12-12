@@ -1,12 +1,5 @@
 package com.imagina.core_producer.service;
 
-<<<<<<< HEAD
-import org.springframework.stereotype.Service;
-
-@Service
-public class StockService {
-
-=======
 import com.imagina.core_producer.model.Stock;
 import org.springframework.stereotype.Service;
 
@@ -53,6 +46,4 @@ public class StockService {
 
         return stock;
     }
-
->>>>>>> a09dc005118e511cf2c2358a8575f9f9500c7bae
 }
