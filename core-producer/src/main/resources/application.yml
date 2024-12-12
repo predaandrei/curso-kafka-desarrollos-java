@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: core-producer
+  jackson:
+    date-format: dd-MM-yyyy

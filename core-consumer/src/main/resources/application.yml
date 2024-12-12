@@ -9,3 +9,6 @@ spring:
     consumer:
       group-id: kafka-core-consumer-group
       auto-offset-reset: earliest
+      max-poll-records: 4
+    listener:
+      ack-mode: batch

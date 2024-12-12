@@ -2,7 +2,7 @@
 - Indicar además que crear los topics es opcional, ya que debido a la configuración que tenemos en el docker compose, los topics se crearán automáticamente si no existen la primera vez que se publique en ellos.
 
 ```bash
-docker compose -f docker-compose-core-yml
+docker compose -f docker-compose-core-yml up -d
 docker exec -it kafka bash
 kafka-topics.sh --bootstrap-server localhost:9092 --create --topic t-intervalo-fijo --partitions 1
 kafka-topics.sh --bootstrap-server localhost:9092 --list
