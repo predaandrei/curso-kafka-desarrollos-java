@@ -5,7 +5,7 @@
 ### 1. Crear el topic t-multi-particiones
 
 ```bash
-docker compose -f docker-compose-core-yml
+docker compose -f docker-compose-core-yml up -d
 docker exec -it kafka bash
 kafka-topics.sh --bootstrap-server localhost:9092 --create --topic t-multi-particiones --partitions 3
 kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic t-multi-particiones

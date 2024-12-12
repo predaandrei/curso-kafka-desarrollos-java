@@ -1,7 +1,7 @@
 ### 1. Crear el topic t-hola-mundo
 
 ```bash
-docker compose -f docker-compose-core-yml
+docker compose -f docker-compose-core-yml up -d
 docker exec -it kafka bash
 kafka-topics.sh --bootstrap-server localhost:9092 --create --topic t-hola-mundo --partitions 1
 kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic t-hola-mundo
