@@ -1,10 +1,9 @@
 package com.imagina.core_producer;
 
 import com.imagina.core_producer.model.Empleado;
-import com.imagina.core_producer.producer.ContadorProducer;
-import com.imagina.core_producer.producer.EmpleadoProducer;
-import com.imagina.core_producer.producer.HolaMundoKafkaProducer;
-import com.imagina.core_producer.producer.KafkaKeyProducer;
+import com.imagina.core_producer.model.OrdenProducto;
+import com.imagina.core_producer.model.SolicitudCompra;
+import com.imagina.core_producer.producer.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -28,8 +27,14 @@ public class CoreProducerApplication implements CommandLineRunner {
 	//@Autowired
 	//private EmpleadoProducer empleadoProducer;
 
+	//@Autowired
+	//private ContadorProducer producer;
+
+	//@Autowired
+	//private SolicitudCompraProducer solicitudCompraProducer;
+
 	@Autowired
-	private ContadorProducer producer;
+	private OrdenProductoProducer ordenProductoProducer;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CoreProducerApplication.class, args);
@@ -51,7 +56,28 @@ public class CoreProducerApplication implements CommandLineRunner {
 			empleadoProducer.sendEmpleado(empleado);
 		}*/
 
-		producer.send(100);
+		//producer.send(100);
+
+		/*SolicitudCompra solicitud1 = new SolicitudCompra(UUID.randomUUID(), "SOL-001", 100, "EUR");
+		SolicitudCompra solicitud2 = new SolicitudCompra(UUID.randomUUID(), "SOL-002", 200, "EUR");
+		SolicitudCompra solicitud3 = new SolicitudCompra(UUID.randomUUID(), "SOL-003", 300, "USD");
+
+		solicitudCompraProducer.send(solicitud1);
+		solicitudCompraProducer.send(solicitud2);
+		solicitudCompraProducer.send(solicitud3);
+
+		solicitudCompraProducer.send(solicitud1);*/
+
+
+		OrdenProducto zapatillas = new OrdenProducto(3, "zapatillas");
+		OrdenProducto colonia = new OrdenProducto(10, "colonia");
+		OrdenProducto camisetas = new OrdenProducto(5, "camisetas");
+
+		ordenProductoProducer.send(zapatillas);
+		ordenProductoProducer.send(colonia);
+		ordenProductoProducer.send(camisetas);
+
+
 
 	}
 }
