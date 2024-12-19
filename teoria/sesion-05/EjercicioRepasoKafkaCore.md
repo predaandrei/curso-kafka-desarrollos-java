@@ -116,3 +116,30 @@ public class Stock {
     private long timestamp;
 }
 ```
+
+## Dependencias
+
+```xml
+<dependency>
+  <groupId>com.fasterxml.jackson.core</groupId>
+  <artifactId>jackson-core</artifactId>
+  <version>2.18.2</version>
+</dependency>
+
+<dependency>
+   <groupId>com.fasterxml.jackson.datatype</groupId>
+   <artifactId>jackson-datatype-jsr310</artifactId>
+   <version>2.18.2</version>
+</dependency>
+
+<dependency>
+   <groupId>org.springframework.kafka</groupId>
+   <artifactId>spring-kafka</artifactId>
+</dependency>
+
+<dependency>
+   <groupId>org.projectlombok</groupId>
+   <artifactId>lombok</artifactId>
+   <optional>true</optional>
+</dependency>
+```
