@@ -55,7 +55,8 @@ Implementa consumidores en grupos para cada topic
 ## Semánticas de Consumo
 
 - Configura la aplicación para usar auto-offset-reset en modo earliest para los consumidores.
-- Establece ack-mode a manual y utiliza un commit explícito después de procesar cada mensaje en PedidoConsumer.
+- Establece ack-mode a record para hacer commit después de procesar cada mensaje en PedidoConsumer.
+- Establece ack-mode a batch 5 para NotificationConsumer.
 
 ## Dead Letter Topic
 
