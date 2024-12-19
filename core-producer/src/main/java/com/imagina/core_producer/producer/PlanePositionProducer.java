@@ -4,9 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.imagina.core_producer.model.PlanePosition;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.stereotype.Service;
 
 //@Service
 @Slf4j
@@ -19,8 +17,13 @@ public class PlanePositionProducer {
     private ObjectMapper objectMapper;
 
 
-    public void sendPosition(PlanePosition planePosition) throws JsonProcessingException {
-        var json =  objectMapper.writeValueAsString(planePosition);
-        kafkaTemplate.send("t-posicion", json);
+    public void sendPosition(PlanePosition planePosition) {
+        try {
+            var json = objectMapper.writeValueAsString(planePosition);
+            kafkaTemplate.send("t-posicion", json);
+        } catch (JsonProcessingException e) {
+            log.error("ERROR PROCESANDO LA POSICION");
+        }
+
     }
 }

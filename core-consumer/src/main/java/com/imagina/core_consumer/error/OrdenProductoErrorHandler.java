@@ -15,6 +15,10 @@ public class OrdenProductoErrorHandler implements ConsumerAwareListenerErrorHand
     public Object handleError(Message<?> message, ListenerExecutionFailedException exception, Consumer<?, ?> consumer) {
         log.warn("Error en el procesado de una orden de producto, enviando el error a ElasticSearch : {}, " +
                 "causa : {}", message.getPayload(), exception.getMessage());
+
+        if (exception.getCause() instanceof RuntimeException) {
+            throw exception;
+        }
         return null;
     }
 }
