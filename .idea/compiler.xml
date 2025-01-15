@@ -7,15 +7,33 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="core-producer" />
-        <module name="core-consumer" />
+      </profile>
+      <profile name="Annotation profile for kafka-storage" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
+        </processorPath>
+        <module name="kafka-reward" />
+        <module name="kafka-pattern" />
+        <module name="kafka-order" />
+        <module name="kafka-storage" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="core-consumer" target="21" />
+      <module name="core-producer" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="core-consumer" options="-parameters" />
       <module name="core-producer" options="-parameters" />
+      <module name="kafka-order" options="-parameters" />
+      <module name="kafka-pattern" options="-parameters" />
+      <module name="kafka-reward" options="-parameters" />
+      <module name="kafka-storage" options="-parameters" />
     </option>
   </component>
 </project>

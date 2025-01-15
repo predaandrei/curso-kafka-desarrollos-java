@@ -1,4 +1,4 @@
-package com.imagina.kafka.broker.producer;
+package com.imagina.kafka.broker.consumer;
 
 import com.imagina.kafka.broker.message.OrderMessage;
 import org.slf4j.Logger;
