@@ -3,7 +3,11 @@ package com.imagina.kafka.broker.message;
 import java.time.OffsetDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.*;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrderMessage {
 
     private String orderLocation;
@@ -21,6 +25,7 @@ public class OrderMessage {
 
     private int quantity;
 
+    /*
     public OrderMessage() {
     }
 
@@ -89,6 +94,7 @@ public class OrderMessage {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+     */
 
     @Override
     public String toString() {
