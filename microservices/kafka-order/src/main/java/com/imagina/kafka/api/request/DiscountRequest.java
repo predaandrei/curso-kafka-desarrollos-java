@@ -1,4 +1,4 @@
-package com.imagina.kafka.broker.message;
+package com.imagina.kafka.api.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DiscountMessage {
+public class DiscountRequest {
 
 	private String discountCode;
 
@@ -15,7 +15,9 @@ public class DiscountMessage {
 
 	@Override
 	public String toString() {
-		return "DiscountMessage [discountCode=" + discountCode + ", discountPercentage=" + discountPercentage + "]";
+		return "DiscountRequest{" +
+				"discountCode='" + discountCode + '\'' +
+				", discountPercentage=" + discountPercentage +
+				'}';
 	}
-
 }
