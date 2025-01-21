@@ -4,10 +4,9 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/microservices/kafka-order/pom.xml" />
-        <option value="$PROJECT_DIR$/microservices/kafka-pattern/pom.xml" />
-        <option value="$PROJECT_DIR$/microservices/kafka-reward/pom.xml" />
-        <option value="$PROJECT_DIR$/microservices/kafka-storage/pom.xml" />
+        <option value="$PROJECT_DIR$/kafka-stream/kafka-stream-sample/pom.xml" />
+        <option value="$PROJECT_DIR$/kafka-stream/kafka-stream-order/pom.xml" />
+        <option value="$PROJECT_DIR$/kafka-stream/kafka-stream-storage/pom.xml" />
       </list>
     </option>
   </component>

@@ -8,11 +8,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
       </profile>
-      <profile name="Annotation profile for kafka-order" enabled="true">
+      <profile name="Annotation profile for kafka-stream-order" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
         </processorPath>
         <module name="kafka-order" />
@@ -22,16 +23,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
         </processorPath>
-        <module name="kafka-storage" />
-        <module name="kafka-reward" />
-        <module name="kafka-pattern" />
+        <module name="kafka-stream-storage" />
+        <module name="kafka-stream-sample" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="core-consumer" target="21" />
       <module name="core-producer" target="21" />
+      <module name="kafka-pattern" target="21" />
+      <module name="kafka-reward" target="21" />
+      <module name="kafka-storage" target="21" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -42,6 +45,8 @@
       <module name="kafka-pattern" options="-parameters" />
       <module name="kafka-reward" options="-parameters" />
       <module name="kafka-storage" options="-parameters" />
+      <module name="kafka-stream-sample" options="-parameters" />
+      <module name="kafka-stream-storage" options="-parameters" />
     </option>
   </component>
 </project>
