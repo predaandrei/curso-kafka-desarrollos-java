@@ -4,7 +4,7 @@
 ### Tópicos Kafka Involucrados
 
 Entrada
-- t-orders: Contiene mensajes de pedidos con la estructura OrderMessage.
+- `t-commodity-orders`: Contiene mensajes de pedidos con la estructura OrderMessage.
 
 Salida
 - `t-orders-electronics`: Pedidos cuya categoría de artículos es "Electronics".

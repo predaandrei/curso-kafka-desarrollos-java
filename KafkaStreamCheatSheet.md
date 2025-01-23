@@ -176,7 +176,7 @@ Salida
 
 - Combina dos KStreams en función de una clave común.
 - Requiere una ventana de tiempo para la operación (en caso de joins con streams).
-- Se trata de una operación estadoful.
+- Se trata de una operación stateful.
 - Devuelve un KStream.
 
 ```java
@@ -231,7 +231,7 @@ Salida
 
 - Aplica una operación de agregación sobre un KGroupedStream.
 - Acumula valores en función de una clave.
-- Se trata de una operación estadoful.
+- Se trata de una operación stateful.
 - Devuelve un KTable.
 
 ```java
