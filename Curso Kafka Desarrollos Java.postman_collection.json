@@ -1,0 +1,691 @@
+{
+	"info": {
+		"_postman_id": "11d20f5c-aeea-46e8-a0fc-6530a02cd86f",
+		"name": "Curso Kafka Desarrollos Java",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "551992"
+	},
+	"item": [
+		{
+			"name": "Kafka-ms",
+			"item": [
+				{
+					"name": "Order",
+					"item": [
+						{
+							"name": "Order 1 Random Item",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"orderLocation\": \"{{$randomCountry}}\",\r\n  \"creditCardNumber\": \"{{$randomBankAccount}}{{$randomBankAccount}}\",\r\n  \"items\": [\r\n    {\r\n      \"itemName\": \"{{$randomProductMaterial}} {{$randomProduct}}\",\r\n      \"price\": {{$randomInt}},\r\n      \"quantity\": {{$randomInt}}\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{kafkaMsOrderUrl}}/api/order",
+									"host": [
+										"{{kafkaMsOrderUrl}}"
+									],
+									"path": [
+										"api",
+										"order"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Order 2 Random Items",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"orderLocation\": \"{{$randomCountry}}\",\r\n  \"creditCardNumber\": \"{{$randomBankAccount}}{{$randomBankAccount}}\",\r\n  \"items\": [\r\n    {\r\n      \"itemName\": \"{{$randomProductMaterial}} {{$randomProduct}}\",\r\n      \"price\": {{$randomInt}},\r\n      \"quantity\": {{$randomInt}}\r\n    },\r\n    {\r\n      \"itemName\": \"{{$randomProductMaterial}} {{$randomProduct}}\",\r\n      \"price\": {{$randomInt}},\r\n      \"quantity\": {{$randomInt}}\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{kafkaMsOrderUrl}}/api/order",
+									"host": [
+										"{{kafkaMsOrderUrl}}"
+									],
+									"path": [
+										"api",
+										"order"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Order 3 Random Items",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"orderLocation\": \"{{$randomCountry}}\",\r\n  \"creditCardNumber\": \"{{$randomBankAccount}}{{$randomBankAccount}}\",\r\n  \"items\": [\r\n    {\r\n      \"itemName\": \"{{$randomProductMaterial}} {{$randomProduct}}\",\r\n      \"price\": {{$randomInt}},\r\n      \"quantity\": {{$randomInt}}\r\n    },\r\n    {\r\n      \"itemName\": \"{{$randomProductMaterial}} {{$randomProduct}}\",\r\n      \"price\": {{$randomInt}},\r\n      \"quantity\": {{$randomInt}}\r\n    },    \r\n    {\r\n      \"itemName\": \"{{$randomProductMaterial}} {{$randomProduct}}\",\r\n      \"price\": {{$randomInt}},\r\n      \"quantity\": {{$randomInt}}\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{kafkaMsOrderUrl}}/api/order",
+									"host": [
+										"{{kafkaMsOrderUrl}}"
+									],
+									"path": [
+										"api",
+										"order"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Plastic & Non Plastic Order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orderLocation\": \"{{$randomCountry}}\",\n    \"creditCardNumber\": \"{{$randomBankAccount}}{{$randomBankAccount}}\",\n    \"items\": [\n        {\n            \"itemName\": \"Cotton Dog\",\n            \"price\": 80,\n            \"quantity\": 250\n        },\n        {\n            \"itemName\": \"Plastic Cat\",\n            \"price\": 400,\n            \"quantity\": 500\n        },\n        {\n            \"itemName\": \"Wooden Horse\",\n            \"price\": 700,\n            \"quantity\": 90\n        },\n        {\n            \"itemName\": \"Steel Pig\",\n            \"price\": 350,\n            \"quantity\": 270\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{kafkaMsOrderUrl}}/api/order",
+									"host": [
+										"{{kafkaMsOrderUrl}}"
+									],
+									"path": [
+										"api",
+										"order"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Promotion",
+					"item": [
+						{
+							"name": "Create Promotion",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"promotionCode\" : \"{{$randomWord}}{{$randomInt}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{kafkaMsOrderUrl}}/api/promotion",
+									"host": [
+										"{{kafkaMsOrderUrl}}"
+									],
+									"path": [
+										"api",
+										"promotion"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Discount",
+					"item": [
+						{
+							"name": "Create Discount",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"randomDiscountPercentage\", _.random(1, 10) * 5)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"discountCode\": \"{{$randomColor}}{{$randomInt}}\",\n    \"discountPercentage\": {{randomDiscountPercentage}}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{kafkaMsOrderUrl}}/api/discount",
+									"host": [
+										"{{kafkaMsOrderUrl}}"
+									],
+									"path": [
+										"api",
+										"discount"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Feedback",
+					"item": [
+						{
+							"name": "Simulation",
+							"item": [
+								{
+									"name": "01 - Indonesia (4)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"var pronouns = [\"he\", \"she\", \"they\"]",
+													"var randomPronoun = pronouns[_.random(pronouns.length - 1)];",
+													"",
+													"var randomAdjectiveWords = [\"happy\", \"good\", \"helpful\", \"angry\", \"sad\", \"bad\", \"visionary\", \"strategic\", \"viral\", \"rich\", \"innovative\", \"efficient\", \"collaborative\", \"secure\"];",
+													"var randomAdjectiveWord = randomAdjectiveWords[ _.random(randomAdjectiveWords.length - 1)];",
+													"",
+													"pm.environment.set(\"randomAdjectiveWord\", randomAdjectiveWord)",
+													"pm.environment.set(\"randomPronoun\", randomPronoun)",
+													"pm.environment.set(\"randomRating\", _.random(1, 5))"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n   \"location\" : \"Indonesia\",\n   \"rating\" : 4,\n   \"feedback\" : \"The {{$randomJobType}} at {{$randomDepartment}} department, {{randomPronoun}} makes me feel {{randomAdjectiveWord}} when I try to {{$randomIngverb}} {{$randomNoun}}.\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{kafkaMsOrderUrl}}/api/feedback",
+											"host": [
+												"{{kafkaMsOrderUrl}}"
+											],
+											"path": [
+												"api",
+												"feedback"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "02 - Indonesia (5)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"var pronouns = [\"he\", \"she\", \"they\"]",
+													"var randomPronoun = pronouns[_.random(pronouns.length - 1)];",
+													"",
+													"var randomAdjectiveWords = [\"happy\", \"good\", \"helpful\", \"angry\", \"sad\", \"bad\", \"visionary\", \"strategic\", \"viral\", \"rich\", \"innovative\", \"efficient\", \"collaborative\", \"secure\"];",
+													"var randomAdjectiveWord = randomAdjectiveWords[ _.random(randomAdjectiveWords.length - 1)];",
+													"",
+													"pm.environment.set(\"randomAdjectiveWord\", randomAdjectiveWord)",
+													"pm.environment.set(\"randomPronoun\", randomPronoun)",
+													"pm.environment.set(\"randomRating\", _.random(1, 5))"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n   \"location\" : \"Indonesia\",\n   \"rating\" : 5,\n   \"feedback\" : \"The {{$randomJobType}} at {{$randomDepartment}} department, {{randomPronoun}} makes me feel {{randomAdjectiveWord}} when I try to {{$randomIngverb}} {{$randomNoun}}.\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{kafkaMsOrderUrl}}/api/feedback",
+											"host": [
+												"{{kafkaMsOrderUrl}}"
+											],
+											"path": [
+												"api",
+												"feedback"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "03 - Indonesia (3)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"var pronouns = [\"he\", \"she\", \"they\"]",
+													"var randomPronoun = pronouns[_.random(pronouns.length - 1)];",
+													"",
+													"var randomAdjectiveWords = [\"happy\", \"good\", \"helpful\", \"angry\", \"sad\", \"bad\", \"visionary\", \"strategic\", \"viral\", \"rich\", \"innovative\", \"efficient\", \"collaborative\", \"secure\"];",
+													"var randomAdjectiveWord = randomAdjectiveWords[ _.random(randomAdjectiveWords.length - 1)];",
+													"",
+													"pm.environment.set(\"randomAdjectiveWord\", randomAdjectiveWord)",
+													"pm.environment.set(\"randomPronoun\", randomPronoun)",
+													"pm.environment.set(\"randomRating\", _.random(1, 5))"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n   \"location\" : \"Indonesia\",\n   \"rating\" : 3,\n   \"feedback\" : \"The {{$randomJobType}} at {{$randomDepartment}} department, {{randomPronoun}} makes me feel {{randomAdjectiveWord}} when I try to {{$randomIngverb}} {{$randomNoun}}.\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{kafkaMsOrderUrl}}/api/feedback",
+											"host": [
+												"{{kafkaMsOrderUrl}}"
+											],
+											"path": [
+												"api",
+												"feedback"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "04 - Singapore (5)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"var pronouns = [\"he\", \"she\", \"they\"]",
+													"var randomPronoun = pronouns[_.random(pronouns.length - 1)];",
+													"",
+													"var randomAdjectiveWords = [\"happy\", \"good\", \"helpful\", \"angry\", \"sad\", \"bad\", \"visionary\", \"strategic\", \"viral\", \"rich\", \"innovative\", \"efficient\", \"collaborative\", \"secure\"];",
+													"var randomAdjectiveWord = randomAdjectiveWords[ _.random(randomAdjectiveWords.length - 1)];",
+													"",
+													"pm.environment.set(\"randomAdjectiveWord\", randomAdjectiveWord)",
+													"pm.environment.set(\"randomPronoun\", randomPronoun)",
+													"pm.environment.set(\"randomRating\", _.random(1, 5))"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n   \"location\" : \"Singapore\",\n   \"rating\" : 5,\n   \"feedback\" : \"The {{$randomJobType}} at {{$randomDepartment}} department, {{randomPronoun}} makes me feel {{randomAdjectiveWord}} when I try to {{$randomIngverb}} {{$randomNoun}}.\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{kafkaMsOrderUrl}}/api/feedback",
+											"host": [
+												"{{kafkaMsOrderUrl}}"
+											],
+											"path": [
+												"api",
+												"feedback"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "05 - Singapore (3)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"var pronouns = [\"he\", \"she\", \"they\"]",
+													"var randomPronoun = pronouns[_.random(pronouns.length - 1)];",
+													"",
+													"var randomAdjectiveWords = [\"happy\", \"good\", \"helpful\", \"angry\", \"sad\", \"bad\", \"visionary\", \"strategic\", \"viral\", \"rich\", \"innovative\", \"efficient\", \"collaborative\", \"secure\"];",
+													"var randomAdjectiveWord = randomAdjectiveWords[ _.random(randomAdjectiveWords.length - 1)];",
+													"",
+													"pm.environment.set(\"randomAdjectiveWord\", randomAdjectiveWord)",
+													"pm.environment.set(\"randomPronoun\", randomPronoun)",
+													"pm.environment.set(\"randomRating\", _.random(1, 5))"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n   \"location\" : \"Singapore\",\n   \"rating\" : 3,\n   \"feedback\" : \"The {{$randomJobType}} at {{$randomDepartment}} department, {{randomPronoun}} makes me feel {{randomAdjectiveWord}} when I try to {{$randomIngverb}} {{$randomNoun}}.\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{kafkaMsOrderUrl}}/api/feedback",
+											"host": [
+												"{{kafkaMsOrderUrl}}"
+											],
+											"path": [
+												"api",
+												"feedback"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Create Good Feedback",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"location\" : \"{{$randomCountry}}\",\n   \"rating\" : 5,\n   \"feedback\" : \"I'm very happy with the staff. Helpful and always smile. Please keep make me feels good.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{kafkaMsOrderUrl}}/api/feedback",
+									"host": [
+										"{{kafkaMsOrderUrl}}"
+									],
+									"path": [
+										"api",
+										"feedback"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Bad Feedback",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"location\" : \"{{$randomCountry}}\",\n   \"rating\" : 1,\n   \"feedback\" : \"The staff mocked me until I sad and make me angry! It's really bad experience!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{kafkaMsOrderUrl}}/api/feedback",
+									"host": [
+										"{{kafkaMsOrderUrl}}"
+									],
+									"path": [
+										"api",
+										"feedback"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Random Feedback",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var countries = [\"United Kingdom\", \"Thailand\", \"Norway\", \"Canada\", \"France\", \"China\", \"Brazil\"]",
+											"var pronouns = [\"he\", \"she\", \"they\"]",
+											"var randomPronoun = pronouns[_.random(pronouns.length - 1)];",
+											"",
+											"var randomAdjectiveWords = [\"happy\", \"good\", \"helpful\", \"angry\", \"sad\", \"bad\"];",
+											"var randomAdjectiveWord = randomAdjectiveWords[ _.random(randomAdjectiveWords.length - 1)];",
+											"",
+											"pm.environment.set(\"randomCountry\", countries[_.random(countries.length - 1)])",
+											"pm.environment.set(\"randomAdjectiveWord\", randomAdjectiveWord)",
+											"pm.environment.set(\"randomPronoun\", randomPronoun)",
+											"pm.environment.set(\"randomRating\", _.random(1, 5))"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"location\" : \"{{randomCountry}}\",\n   \"rating\" : {{randomRating}},\n   \"feedback\" : \"The {{$randomJobType}} at {{$randomDepartment}} department, {{randomPronoun}} makes me feel {{randomAdjectiveWord}} when I try to {{$randomVerb}} {{$randomNoun}}.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{kafkaMsOrderUrl}}/api/feedback",
+									"host": [
+										"{{kafkaMsOrderUrl}}"
+									],
+									"path": [
+										"api",
+										"feedback"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"const currentDate = new Date().toISOString().slice(0,10);",
+					"pm.environment.set(\"currentDate\", currentDate);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "inventorySimulationItem",
+			"value": "Apple"
+		},
+		{
+			"key": "identifier",
+			"value": "1"
+		},
+		{
+			"key": "kafkaClusterId",
+			"value": "9",
+			"type": "string"
+		},
+		{
+			"key": "kafkaTopicName",
+			"value": "my-topic-from-api",
+			"type": "string"
+		},
+		{
+			"key": "kafkaMsOrderUrl",
+			"value": "http://localhost:9001",
+			"type": "string"
+		},
+		{
+			"key": "kafkaConnectUrl",
+			"value": "http://localhost:8083",
+			"type": "string"
+		},
+		{
+			"key": "kafkaConnectSchemalessUrl",
+			"value": "http://localhost:18083",
+			"type": "string"
+		},
+		{
+			"key": "schemaRegistryUrl",
+			"value": "http://localhost:8081",
+			"type": "string"
+		},
+		{
+			"key": "restProxyUrl",
+			"value": "http://localhost:8082",
+			"type": "string"
+		},
+		{
+			"key": "kafkaKsqldbUrl",
+			"value": "http://localhost:8088",
+			"type": "string"
+		},
+		{
+			"key": "kafkaKsqldbSampleUrl",
+			"value": "http://localhost:9002",
+			"type": "string"
+		},
+		{
+			"key": "schemaId",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "subject",
+			"value": "my-topic-from-api-value",
+			"type": "string"
+		},
+		{
+			"key": "subjectVersionId",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "consumerGroupId",
+			"value": "myConsumerGroupFromApi",
+			"type": "string"
+		},
+		{
+			"key": "consumerName",
+			"value": "avroConsumerFromApi",
+			"type": "string"
+		},
+		{
+			"key": "localhost-ip",
+			"value": "192.168.0.8",
+			"type": "string"
+		},
+		{
+			"key": "elasticsearchUrl",
+			"value": "https://localhost:9200",
+			"type": "string"
+		},
+		{
+			"key": "elasticsearchUsername",
+			"value": "elastic",
+			"type": "string"
+		},
+		{
+			"key": "elasticsearchPassword",
+			"value": "ImZgm4qITBiwqd8Dks8ay7pV",
+			"type": "string"
+		}
+	]
+}
