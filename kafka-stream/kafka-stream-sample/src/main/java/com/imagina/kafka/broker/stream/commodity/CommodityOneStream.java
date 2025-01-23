@@ -13,10 +13,10 @@ import org.springframework.kafka.support.serializer.JsonSerde;
 
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class CommodityOneStream {
 
-        @Autowired
+        //@Autowired
         void kstreamCommodityTrading(StreamsBuilder builder) {
                 var orderSerde = new JsonSerde<>(OrderMessage.class);
                 var orderPatternSerde = new JsonSerde<>(OrderPatternMessage.class);

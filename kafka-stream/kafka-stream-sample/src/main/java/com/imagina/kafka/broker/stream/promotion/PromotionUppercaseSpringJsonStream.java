@@ -11,10 +11,10 @@ import org.springframework.kafka.support.serializer.JsonSerde;
 
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class PromotionUppercaseSpringJsonStream {
 
-    //@Autowired
+    @Autowired
     void kstreamPromotionUppercase(StreamsBuilder builder) {
         var jsonSerde = new JsonSerde<>(PromotionMessage.class);
         var sourceStream = builder.stream("t-commodity-promotion", Consumed.with(Serdes.String(), jsonSerde));

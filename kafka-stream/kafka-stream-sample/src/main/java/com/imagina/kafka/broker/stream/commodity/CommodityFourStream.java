@@ -15,7 +15,9 @@ import org.springframework.kafka.support.serializer.JsonSerde;
 
 import org.springframework.stereotype.Component;
 
-@Component
+import java.util.Arrays;
+
+//@Component
 @Slf4j
 public class CommodityFourStream {
 
@@ -23,7 +25,7 @@ public class CommodityFourStream {
                 log.info("Reporting fraud {}", orderMessage);
         }
 
-        @Autowired
+        //@Autowired
         void kstreamCommodityTrading(StreamsBuilder builder) {
                 var orderSerde = new JsonSerde<>(OrderMessage.class);
                 var orderPatternSerde = new JsonSerde<>(OrderPatternMessage.class);

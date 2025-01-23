@@ -67,5 +67,4 @@ public class CommodityStreamUtil {
         return (key, orderMessage) -> KeyValue.pair(orderMessage.getOrderLocation(),
                 convertToOrderRewardMessage(orderMessage));
     }
-
 }

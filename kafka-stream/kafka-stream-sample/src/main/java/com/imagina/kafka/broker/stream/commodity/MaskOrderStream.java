@@ -11,10 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.support.serializer.JsonSerde;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class MaskOrderStream {
 
-    @Autowired
+    //@Autowired
     void kstreamCommodityMask(StreamsBuilder builder) {
         var orderSerde = new JsonSerde<>(OrderMessage.class);
         var maskedCreditCardStream = builder.stream("t-commodity-order", Consumed.with(Serdes.String(), orderSerde))
