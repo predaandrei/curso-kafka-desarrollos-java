@@ -2,7 +2,7 @@ package com.imagina.kafka.api.command.service;
 
 import com.imagina.kafka.api.request.OrderRequest;
 import com.imagina.kafka.broker.message.OrderMessage;
-import com.imagina.kafka.command.action.OrderAction;
+import com.imagina.kafka.api.command.action.OrderAction;
 import com.imagina.kafka.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

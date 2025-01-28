@@ -8,10 +8,10 @@ import org.apache.kafka.streams.kstream.Printed;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-//@Configuration
+@Configuration
 public class PromotionUppercaseStream {
 
-    //@Bean
+    @Bean
     KStream<String, String> kstreamPromotionUppercase(StreamsBuilder builder) {
         KStream<String, String> sourceStream = builder.stream("t-commodity-promotion",
                 Consumed.with(Serdes.String(), Serdes.String()));
@@ -25,6 +25,14 @@ public class PromotionUppercaseStream {
         uppercaseStream.print(Printed.<String, String>toSysOut().withLabel("Uppercase Stream"));
 
         return sourceStream;
+
+
+        // ordenes -> orden.isTotalPrice > 500 and orden.isQuantity > 10 ->
+        // orden.changeKey -> kStreamDiscount -> kStreamDiscount.to(t-discount)
+
+        // kStreamPlastic
+
+        // kStreamDiscount.merge(kStreamPlastic).merge(kStreamSteal).to(t-all)
     }
 
 }

@@ -35,9 +35,24 @@ public class FeedbackOneStream {
 
 Con esta solución estamos enviando el feedback bueno a un nuevo topic pero la key es null.
 
+Ejemplo de ejecución
+
+```bash
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --property print.key=true --topic t-commodity-feedback-one-good
+```
+
+Salida
+
+```
+null happy
+null helpful
+```
+
 ## FeedbackTwoStream.java
 
 - Queremos enviar el feedback bueno pero añadiendo como key a los mensajes la localización.
+- En lugar de utilizar `flatMapValues` usaremos `flatMap`
+- Ten en cuenta que el segundo `map` tras `distinct()`es un map de java stream.
 
 Creamos la clase `broker.stream.feedback.FeedbackTwoStream.java`
 
@@ -71,6 +86,19 @@ public class FeedbackTwoStream {
 }
 ```
 
+Ejemplo de ejecución
+
+```bash
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --property print.key=true --topic t-commodity-feedback-two-good
+```
+
+Salida
+
+```
+Colombia    feliz
+Colombia    contento
+España  amable
+```
 
 ## FeedbackThreeStream.java (Ejercicio)
 
@@ -81,4 +109,30 @@ public class FeedbackTwoStream {
 
 ```java
 private static final Set<String> BAD_WORDS = Set.of("enfadado", "descontento", "malo");
+```
+
+Ejemplo de ejecución
+
+```bash
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --property print.key=true --topic t-commodity-feedback-three-good
+```
+
+Salida
+
+```
+Colombia    feliz
+Colombia    contento
+España  amable
+```
+
+```bash
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --property print.key=true --topic t-commodity-feedback-three-bad
+```
+
+Salida
+
+```
+Venezuela    enfadado
+Colombia    descontento
+España  malo
 ```

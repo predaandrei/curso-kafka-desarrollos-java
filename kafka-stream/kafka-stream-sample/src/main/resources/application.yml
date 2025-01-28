@@ -28,6 +28,7 @@ spring:
       bootstrap-servers:
         - localhost:9092
       properties:
+        missing-topics-fatal: false
         default:
           key:
             serde: org.apache.kafka.common.serialization.Serdes$StringSerde

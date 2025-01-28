@@ -16,8 +16,8 @@ Salida
 ### Lógica del Flujo
 
 - Clasificar los pedidos en tres categorías: "Plastic", "Steel" y "Others", basándose en el nombre del artículo (itemName).
-- Calcular el total del pedido (price * quantity) y enviarlo al tópico t-orders-discounted si supera los $500 y la cantidad es mayor a 10.
-- Cambiar la clave de los mensajes en t-orders-discounted para que sea una combinación de la ubicación y el número de orden (orderLocation-orderNumber).
+- Calcular el total del pedido (price * quantity) y enviarlo al tópico `t-orders-discounted` si supera los $500 y la cantidad es mayor a 10.
+- Cambiar la clave de los mensajes en `t-orders-discounted` para que sea una combinación de la ubicación y el número de orden (orderLocation-orderNumber).
 
 ### Funcionalidad Avanzada
 
@@ -41,9 +41,9 @@ Métodos auxiliares
 - `isDiscountEligible` para validar si un pedido califica para el descuento.
 - `generateKey` para formar la clave combinada.
 
-- Publica mensajes en el tópico t-orders con datos de prueba variados.
-- Verifica los mensajes procesados en los tópicos de salida (t-orders-plastic, t-orders-steel, etc.).
-- Comprueba el resultado combinado en t-orders-all.
+- Publica mensajes en el tópico `t-commodity-orders` con datos de prueba variados.
+- Verifica los mensajes procesados en los tópicos de salida (`t-orders-plastic`, `t-orders-steel`, etc.).
+- Comprueba el resultado combinado en `t-orders-all`.
 
 Extra
 - Completar la funcionalidad de bono usando merge correctamente sumará puntos adicionales. 
