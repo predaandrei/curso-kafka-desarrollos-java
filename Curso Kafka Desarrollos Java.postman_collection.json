@@ -510,51 +510,476 @@
 								}
 							},
 							"response": []
-						},
+						}
+					]
+				},
+				{
+					"name": "Client Purchase",
+					"item": [
 						{
-							"name": "Create Random Feedback",
+							"name": "Create Purchase App",
 							"event": [
 								{
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"var countries = [\"United Kingdom\", \"Thailand\", \"Norway\", \"Canada\", \"France\", \"China\", \"Brazil\"]",
-											"var pronouns = [\"he\", \"she\", \"they\"]",
-											"var randomPronoun = pronouns[_.random(pronouns.length - 1)];",
-											"",
-											"var randomAdjectiveWords = [\"happy\", \"good\", \"helpful\", \"angry\", \"sad\", \"bad\"];",
-											"var randomAdjectiveWord = randomAdjectiveWords[ _.random(randomAdjectiveWords.length - 1)];",
-											"",
-											"pm.environment.set(\"randomCountry\", countries[_.random(countries.length - 1)])",
-											"pm.environment.set(\"randomAdjectiveWord\", randomAdjectiveWord)",
-											"pm.environment.set(\"randomPronoun\", randomPronoun)",
-											"pm.environment.set(\"randomRating\", _.random(1, 5))"
+											"// list random valid data\r",
+											"var arrOS = [\"Android\", \"iOS\"];\r",
+											"var indexOS = Math.floor(Math.random() * arrOS.length);\r",
+											"pm.variables.set(\"randomOperatingSystem\", arrOS[indexOS]);\r",
+											"\r",
+											"var arrSemVer = [\"4.0.0\", \"4.0.1\", \"4.0.2\", \"4.1.0\", \"4.1.1\"];\r",
+											"var indexSemVer = Math.floor(Math.random() * arrSemVer.length);\r",
+											"pm.variables.set(\"randomSemVer\", arrSemVer[indexSemVer]);"
 										],
-										"type": "text/javascript",
-										"packages": {}
+										"type": "text/javascript"
 									}
 								}
 							],
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n   \"location\" : \"{{randomCountry}}\",\n   \"rating\" : {{randomRating}},\n   \"feedback\" : \"The {{$randomJobType}} at {{$randomDepartment}} department, {{randomPronoun}} makes me feel {{randomAdjectiveWord}} when I try to {{$randomVerb}} {{$randomNoun}}.\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
+									"raw": "{\n  \"purchaseAmount\": {{$randomInt}},\n  \"mobileAppVersion\": \"{{randomSemVer}}\",\n  \"operatingSystem\": \"{{randomOperatingSystem}}\",\n  \"location\": {\n    \"latitude\": {{$randomLatitude}},\n    \"longitude\": {{$randomLongitude}}\n  }\n}"
 								},
 								"url": {
-									"raw": "{{kafkaMsOrderUrl}}/api/feedback",
+									"raw": "{{kafkaMsOrderUrl}}/api/customer/purchase/mobile",
 									"host": [
 										"{{kafkaMsOrderUrl}}"
 									],
 									"path": [
 										"api",
-										"feedback"
+										"customer",
+										"purchase",
+										"mobile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Purchase Web",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// list random valid data\r",
+											"var arrOS = [\"macOS\", \"Windows\", \"Linux\"];\r",
+											"var indexOS = Math.floor(Math.random() * arrOS.length);\r",
+											"pm.variables.set(\"randomOperatingSystem\", arrOS[indexOS]);\r",
+											"\r",
+											"// list random valid data\r",
+											"var arrBrowser = [\"Chrome\", \"Firefox\", \"Safari\", \"Edge\", \"Opera\", \"Other\"];\r",
+											"var indexBrowser = Math.floor(Math.random() * arrBrowser.length);\r",
+											"pm.variables.set(\"randomBrowser\", arrBrowser[indexBrowser]);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"purchaseAmount\": {{$randomInt}},\n  \"browser\": \"{{randomBrowser}}\",\n  \"operatingSystem\": \"{{randomOperatingSystem}}\"\n}"
+								},
+								"url": {
+									"raw": "{{kafkaMsOrderUrl}}/api/customer/purchase/web",
+									"host": [
+										"{{kafkaMsOrderUrl}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"purchase",
+										"web"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Client Info",
+					"item": [
+						{
+							"name": "Ejemplo Simulado",
+							"item": [
+								{
+									"name": "Ana - Carrito 1",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "text/plain"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"customerId\": \"EVE\",\n  \"itemName\": \"Apple\",\n  \"cartAmount\": 2\n}"
+										},
+										"url": {
+											"raw": "{{kafkaMsOrderUrl}}/api/customer/preference/shopping-cart",
+											"host": [
+												"{{kafkaMsOrderUrl}}"
+											],
+											"path": [
+												"api",
+												"customer",
+												"preference",
+												"shopping-cart"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Ana - Carrito 2",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "text/plain"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"customerId\": \"EVE\",\n  \"itemName\": \"Banana\",\n  \"cartAmount\": 5\n}"
+										},
+										"url": {
+											"raw": "{{kafkaMsOrderUrl}}/api/customer/preference/shopping-cart",
+											"host": [
+												"{{kafkaMsOrderUrl}}"
+											],
+											"path": [
+												"api",
+												"customer",
+												"preference",
+												"shopping-cart"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Juan - Lista deseos 1",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "text/plain"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"customerId\": \"ADAM\",\n  \"itemName\": \"Tomato\"\n}"
+										},
+										"url": {
+											"raw": "{{kafkaMsOrderUrl}}/api/customer/preference/wishlist",
+											"host": [
+												"{{kafkaMsOrderUrl}}"
+											],
+											"path": [
+												"api",
+												"customer",
+												"preference",
+												"wishlist"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Ana - Lista deseos 1",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "text/plain"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"customerId\": \"EVE\",\n  \"itemName\": \"Cherry\"\n}"
+										},
+										"url": {
+											"raw": "{{kafkaMsOrderUrl}}/api/customer/preference/wishlist",
+											"host": [
+												"{{kafkaMsOrderUrl}}"
+											],
+											"path": [
+												"api",
+												"customer",
+												"preference",
+												"wishlist"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Juan - Carrito 1",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "text/plain"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"customerId\": \"ADAM\",\n  \"itemName\": \"Garlic\",\n  \"cartAmount\": 7\n}"
+										},
+										"url": {
+											"raw": "{{kafkaMsOrderUrl}}/api/customer/preference/shopping-cart",
+											"host": [
+												"{{kafkaMsOrderUrl}}"
+											],
+											"path": [
+												"api",
+												"customer",
+												"preference",
+												"shopping-cart"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Ana - Carrito 3",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept",
+												"value": "text/plain"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"customerId\": \"EVE\",\n  \"itemName\": \"Apple\",\n  \"cartAmount\": 5\n}"
+										},
+										"url": {
+											"raw": "{{kafkaMsOrderUrl}}/api/customer/preference/shopping-cart",
+											"host": [
+												"{{kafkaMsOrderUrl}}"
+											],
+											"path": [
+												"api",
+												"customer",
+												"preference",
+												"shopping-cart"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Crear Item de Carrito",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// list random valid data\r",
+											"var customerId = \"CUSTOMER-\" + Math.ceil(Math.random() * 5)\r",
+											"pm.variables.set(\"randomCustomerId\", customerId);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "text/plain"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customerId\": \"{{randomCustomerId}}\",\n  \"itemName\": \"{{$randomProductMaterial}} {{$randomProduct}}\",\n  \"cartAmount\": {{$randomInt}}\n}"
+								},
+								"url": {
+									"raw": "{{kafkaMsOrderUrl}}/api/customer/preference/shopping-cart",
+									"host": [
+										"{{kafkaMsOrderUrl}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"preference",
+										"shopping-cart"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Crear item Lista Deseos",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// list random valid data\r",
+											"var customerId = \"CUSTOMER-\" + Math.ceil(Math.random() * 5)\r",
+											"pm.variables.set(\"randomCustomerId\", customerId);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "text/plain"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customerId\": \"{{randomCustomerId}}\",\n  \"itemName\": \"{{$randomProductMaterial}} {{$randomProduct}}\"\n}"
+								},
+								"url": {
+									"raw": "{{kafkaMsOrderUrl}}/api/customer/preference/wishlist",
+									"host": [
+										"{{kafkaMsOrderUrl}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"preference",
+										"wishlist"
 									]
 								}
 							},
