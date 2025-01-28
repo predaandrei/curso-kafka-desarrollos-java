@@ -1,4 +1,4 @@
-package com.imagina.kafka.command.action;
+package com.imagina.kafka.api.command.action;
 
 import com.imagina.kafka.api.request.OrderRequest;
 import com.imagina.kafka.broker.message.OrderMessage;

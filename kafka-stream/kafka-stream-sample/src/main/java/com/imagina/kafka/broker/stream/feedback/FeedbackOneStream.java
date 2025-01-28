@@ -9,12 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.support.serializer.JsonSerde;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class FeedbackOneStream {
 
     private static final java.util.Set<String> GOOD_WORDS = java.util.Set.of("contento", "bueno", "amable");
 
-    @Autowired
+    //@Autowired
     void kstreamFeedback(StreamsBuilder builder) {
         var stringSerde = Serdes.String();
         var feedbackSerde = new JsonSerde<>(FeedbackMessage.class);

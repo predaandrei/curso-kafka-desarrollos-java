@@ -38,7 +38,7 @@ Con esta solución estamos enviando el feedback bueno a un nuevo topic pero la k
 Ejemplo de ejecución
 
 ```bash
-kafka-console.consumer.sh --bootstrap-server localhost:9092 --property print.key=true --topic t-commodity-feedback-one-good
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --property print.key=true --topic t-commodity-feedback-one-good
 ```
 
 Salida
@@ -89,7 +89,7 @@ public class FeedbackTwoStream {
 Ejemplo de ejecución
 
 ```bash
-kafka-console.consumer.sh --bootstrap-server localhost:9092 --property print.key=true --topic t-commodity-feedback-two-good
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --property print.key=true --topic t-commodity-feedback-two-good
 ```
 
 Salida
@@ -114,7 +114,7 @@ private static final Set<String> BAD_WORDS = Set.of("enfadado", "descontento", "
 Ejemplo de ejecución
 
 ```bash
-kafka-console.consumer.sh --bootstrap-server localhost:9092 --property print.key=true --topic t-commodity-feedback-three-good
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --property print.key=true --topic t-commodity-feedback-three-good
 ```
 
 Salida
@@ -126,7 +126,7 @@ España  amable
 ```
 
 ```bash
-kafka-console.consumer.sh --bootstrap-server localhost:9092 --property print.key=true --topic t-commodity-feedback-three-bad
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --property print.key=true --topic t-commodity-feedback-three-bad
 ```
 
 Salida
