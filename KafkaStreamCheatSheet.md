@@ -204,6 +204,7 @@ Salida
 ---
 
 ## groupByKey
+
 - Agrupa los registros de un stream por sus claves.
 - Útil para agregaciones.
 - Se trata de una operación intermedia.
@@ -254,3 +255,31 @@ Salida
 ```
 
 ---
+
+## cogroup
+
+- Combina múltiples `KGroupedStream` en un único proceso de agregación
+- Útil para realizar agregaciones complejas entre múltiples streams agrupados
+- Se trata de una operación stateful
+- Devuevle un `KTable`
+
+```java
+var cogroupedTable = groupedStream1.cogroup((key, value, agg) -> agg + value)
+    .cogroup(groupedStream2, (key, value, agg) -> agg * value)
+    .cogroup(groupedStream3, (key, value, agg) -> agg - value)
+    .aggregate(() -> 0);
+```
+
+Entrada
+
+```
+Grouped Stream 1: [{A -> [10]}, {B -> [20]}]
+Grouped Stream 2: [{A -> [2]}, {B -> [3]}]
+Grouped Stream 3: [{A -> [5]}, {B -> [10]}]
+```
+
+Salida
+
+```
+[{A, 15}, {B, 50}]
+```
