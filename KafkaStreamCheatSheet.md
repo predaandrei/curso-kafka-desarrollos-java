@@ -14,6 +14,7 @@
 - [aggregate](#aggregate) *(Stateful)*
 - [cogroup](#cogroup) *(Stateful)*
 
+<img src="img/kafkaStreamsOperations.png" alt="Operaciones kafka streams" />
 
 ## branch
 
