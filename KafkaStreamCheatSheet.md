@@ -1,3 +1,21 @@
+# Operaciones Kafka Streams
+
+## Tabla de Contenido
+- [branch](#branch) *(Stateless)*
+- [filter](#filter) *(Stateless)*
+- [filterNot](#filternot) *(Stateless)*
+- [mapValues](#mapvalues) *(Stateless)*
+- [map](#map) *(Stateless)*
+- [flatMap](#flatmap) *(Stateless)*
+- [merge](#merge) *(Stateless)*
+- [join](#join) *(Stateful)*
+- [groupBy](#groupby) *(Stateful)*
+- [groupByKey](#groupbykey) *(Stateful)*
+- [aggregate](#aggregate) *(Stateful)*
+- [cogroup](#cogroup) *(Stateful)*
+
+<img src="img/kafkaStreamsOperations.png" alt="Operaciones kafka streams" />
+
 ## branch
 
 - Divide un stream dependiendo de los predicados aplicados
@@ -200,6 +218,40 @@ Salida
 [{A, "foo-baz"}]
 ```
 
+
+---
+
+## groupBy
+- Agrupa los registros de un stream por una nueva clave generada a partir del valor original.
+- Útil para redistribuir los datos antes de una agregación.
+- Se trata de una operación intermedia.
+- Devuelve un KGroupedStream.
+
+```java
+var groupedStream = stream.groupBy((key, value) -> KeyValue.pair(value, value));
+```
+
+Entrada
+```
+[
+    {"C1": "Laptop"},
+    {"C2": "Tablet"},
+    {"C3": "Laptop"},
+    {"C4": "Laptop"},
+    {"C5": "Tablet"}
+]
+```
+
+Salida (Ejemplo de redistribución de clave)
+
+Si la nueva clave es el valor numérico modificado, por ejemplo, el módulo 2 del valor:
+
+```
+{
+    "Laptop": ["Laptop", "Laptop", "Laptop"],
+    "Tablet": ["Tablet", "Tablet"]
+}
+```
 
 ---
 
