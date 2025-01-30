@@ -1,14 +1,7 @@
 package com.imagina.core_producer;
 
 import com.imagina.core_producer.model.Empleado;
-<<<<<<< HEAD
-=======
-import com.imagina.core_producer.producer.ContadorProducer;
->>>>>>> a09dc005118e511cf2c2358a8575f9f9500c7bae
-import com.imagina.core_producer.producer.EmpleadoProducer;
-import com.imagina.core_producer.producer.HolaMundoKafkaProducer;
-import com.imagina.core_producer.producer.KafkaKeyProducer;
-import com.imagina.core_producer.producer.KafkaNumberProducer;
+import com.imagina.core_producer.producer.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -30,17 +23,17 @@ public class CoreProducerApplication implements CommandLineRunner {
 	//private KafkaKeyProducer kafkaKeyProducer;
 
 	//@Autowired
-<<<<<<< HEAD
+
 	//private KafkaNumberProducer kafkaNumberProducer;
 
-	@Autowired
-	private EmpleadoProducer empleadoProducer;
-=======
+	//@Autowired
 	//private EmpleadoProducer empleadoProducer;
 
+	//@Autowired
+	//private ContadorProducer producer;
+
 	@Autowired
-	private ContadorProducer producer;
->>>>>>> a09dc005118e511cf2c2358a8575f9f9500c7bae
+	private PedidoProducer producer;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CoreProducerApplication.class, args);
@@ -48,14 +41,12 @@ public class CoreProducerApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-<<<<<<< HEAD
 			//kafkaNumberProducer.sendMessage();
 
-		for (int i = 0; i<5; i++){
+		/*for (int i = 0; i<5; i++){
 			Empleado empleado = new Empleado(UUID.randomUUID().toString(), "Andrei");
 			empleadoProducer.sendEmpleado(empleado);
-		}
-=======
+		}*/
 		//holaMundoKafkaProducer.sendHolaMundo("David " + ThreadLocalRandom.current().nextInt(1000));
 		/*for(int i = 1; i <= 30; i++) {
 			String key = "key-" + i;
@@ -70,8 +61,8 @@ public class CoreProducerApplication implements CommandLineRunner {
 			empleadoProducer.sendEmpleado(empleado);
 		}*/
 
-		producer.send(100);
+		//producer.send(100);
+		//producer.sendPedido();
 
->>>>>>> a09dc005118e511cf2c2358a8575f9f9500c7bae
 	}
 }
