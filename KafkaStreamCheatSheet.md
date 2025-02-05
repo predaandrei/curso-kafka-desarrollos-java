@@ -335,3 +335,119 @@ Salida
 ```
 [{A, 15}, {B, 50}]
 ```
+
+---
+
+## windowedBy
+- Aplica una ventana de tiempo a un `KGroupedStream` o `KStream`, permitiendo agrupar eventos dentro de una ventana temporal.
+- Útil para cálculos basados en tiempo, como agregaciones y análisis de tendencias.
+- Se trata de una operación **stateful**.
+- Devuelve un `KGroupedStream` con ventanas de tiempo.
+
+```java
+var windowedStream = stream.groupByKey()
+    .windowedBy(TimeWindows.ofSizeWithNoGrace(Duration.ofMinutes(10)));
+```
+
+### Tipos de Ventanas Soportadas
+- TimeWindows: Ventanas de duración fija sin superposición.
+- SlidingWindows: Ventanas superpuestas que permiten capturar eventos en diferentes intervalos.
+- SessionWindows: Ventanas basadas en actividad, se cierran tras un periodo de inactividad.
+
+**Ejemplo de Uso con Agregación**
+
+```java
+var aggregatedStream = stream.groupByKey()
+.windowedBy(TimeWindows.ofSizeWithNoGrace(Duration.ofMinutes(10)))
+.aggregate(
+() -> 0, // Valor inicial
+(key, value, agg) -> agg + value, // Lógica de agregación
+Materialized.with(Serdes.String(), Serdes.Integer())
+);
+```
+Entrada
+```
+[{A, 10, "10:00"}, {A, 15, "10:05"}, {A, 20, "10:12"}, {B, 30, "10:07"}]
+```
+
+Salida (Ejemplo con ventana de 10 minutos)
+```
+[{A, 25} (10:00 - 10:10)], [{A, 20} (10:10 - 10:20)], [{B, 30} (10:00 - 10:10)]
+```
+
+### ¿Cómo se estructuran los datos en Kafka Streams con windowedBy?
+
+Entrada original (Mensajes sin ventana temporal):
+```
+[{A, 10, "10:00"}, {A, 15, "10:05"}, {A, 20, "10:12"}, {B, 30, "10:07"}]
+```
+Cada mensaje contiene:
+- Clave (A, B): Representa el identificador del grupo.
+- Valor (10, 15, etc.): El dato a procesar.
+- Timestamp ("10:00", "10:05"): Indica cuándo ocurrió el evento.
+
+- Kafka Streams agrupa los datos en intervalos de 10 minutos.
+- Todos los eventos dentro del rango 10:00 - 10:10 se procesan juntos.
+- Luego, se crea otra ventana 10:10 - 10:20, y así sucesivamente.
+ 
+Salida generada por la agregación en ventanas:
+```
+[{A, 25} (10:00 - 10:10)], [{A, 20} (10:10 - 10:20)], [{B, 30} (10:00 - 10:10)]
+```
+
+- En la ventana 10:00 - 10:10, los valores 10 + 15 se suman, generando {A, 25}.
+- En la ventana 10:10 - 10:20, solo hay un mensaje {A, 20}.
+- Para la clave B, solo hay un mensaje en la ventana 10:00 - 10:10 ({B, 30}).
+
+Cuando usas `windowedBy` en Kafka Streams, el mensaje final no solo contiene la clave y el valor, sino también la ventana de tiempo a la que pertenece el mensaje. Esto sucede porque Kafka Streams usa una estructura especial llamada Windowed<K>, donde K es la clave original y la ventana de tiempo es un atributo adicional.
+
+```java
+KTable<Windowed<String>, Long> estadisticas = builder.stream("operaciones-bolsa", Consumed.with(Serdes.String(), Serdes.Long()))
+.groupByKey()
+.windowedBy(TimeWindows.ofSizeWithNoGrace(Duration.ofMinutes(10)))
+.count();
+```
+
+Salida esperada (estructura del mensaje final en Kafka):
+```
+[{(A, 10:00 - 10:10), 2}]
+[{(A, 10:10 - 10:20), 1}]
+[{(B, 10:00 - 10:10), 1}]
+```
+
+- (A, 10:00 - 10:10) → Clave A con ventana 10:00 - 10:10.
+- 2 → Número de mensajes con clave A dentro de esa ventana.
+- Kafka Streams utiliza la clave original (A, B, etc.) y le añade la información de ventana de tiempo.
+Si imprimes la clave, verás algo como:
+```java
+System.out.println("Clave: " + windowedKey.key() + " | Ventana: " + windowedKey.window().start() + " - " + windowedKey.window().end());
+```
+```
+Clave: A | Ventana: 10:00 - 10:10
+Clave: A | Ventana: 10:10 - 10:20
+Clave: B | Ventana: 10:00 - 10:10
+```
+---
+
+## peek
+
+- No modifica los datos: peek() permite visualizar los registros sin alterarlos.
+- No filtra ni transforma los registros, a diferencia de map() o filter().
+- Se usa generalmente para logging o debugging.
+- Es una operación intermedia: No cambia el flujo de Kafka Streams.
+
+```java
+KStream<String, String> stream = builder.stream("t-input-topic");
+stream.peek((key, value) -> System.out.println("Mensaje recibido -> Clave: " + key + ", Valor: " + value))
+        .to("t-output-topic");
+```
+
+Entrada
+```
+{"clave": "AAPL", "valor": "200"}
+```
+
+La consola imprimirá:
+```
+Mensaje recibido -> Clave: AAPL, Valor: 200
+```
